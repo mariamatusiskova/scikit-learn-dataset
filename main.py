@@ -1,3 +1,14 @@
+"""
+Sources:
+- https://medium.com/@manwill/iris-classification-using-a-keras-neural-network-39d735d11fda
+- https://www.turing.com/kb/how-to-create-a-python-based-neural-network-from-scratch
+- https://www.kdnuggets.com/2020/07/getting-started-tensorflow2.html
+- https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris
+- https://www.pycodemates.com/2022/05/iris-dataset-classification-with-python.html
+- https://scipy-lectures.org/packages/scikit-learn/auto_examples/plot_iris_scatter.html
+"""
+
+
 from keras import Sequential
 from keras.src.layers import Dense
 from keras.src.optimizers import Adam

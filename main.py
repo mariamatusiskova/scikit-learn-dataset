@@ -14,6 +14,7 @@ from keras.src.layers import Dense
 from keras.src.optimizers import Adam
 from matplotlib import pyplot as plt
 from sklearn import datasets
+from sklearn.metrics import PrecisionRecallDisplay, precision_recall_curve
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
@@ -158,6 +159,7 @@ def model_compile_summary_fit(model, x_val, y_val, x_training, y_training, x_tes
 
     create_accuracy_graph(model_name, history_results)
     create_loss_graph(model_name, history_results)
+    create_precision_graph(model, x_test, y_test, model_name)
 
     # test
     test(model, x_test, y_test, x_training, y_training)
@@ -181,6 +183,17 @@ def create_accuracy_graph(model_name, history_results):
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
     plt.title(f'Accuracy over Epochs of the {model_name}')
+    plt.legend()
+    plt.show()
+
+def create_precision_graph(model, x_test, y_test, model_name):
+    y_score = model.predict(x_test)
+    precision, recall, _ = precision_recall_curve(y_test[:, 1], y_score[:, 1])
+
+    plt.plot(recall, precision, color='b', label='Precision-Recall curve')
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.title(f'visualize the performance of the {model_name}')
     plt.legend()
     plt.show()
 
